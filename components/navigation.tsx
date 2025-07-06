@@ -1,110 +1,108 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
-import Link from "next/link"
+import { ThemeToggle } from "@/components/theme-toggle"
 
-export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+/**
+ * Primary site navigation — works in both light and dark mode,
+ * includes theme toggle and CTA.  Exports:
+ *   • default  – for `import Navigation from "@/components/navigation"`
+ *   • Navigation – named export
+ */
+function Navigation() {
+  const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "Business Model", href: "/business-model" },
-    { name: "Services", href: "#services" },
-    { name: "Technology", href: "#technology" },
-    { name: "About", href: "#about" },
+    { label: "Home", href: "/" },
+    { label: "Services", href: "/services" },
+    { label: "Technology", href: "/technology" },
+    { label: "Business Model", href: "/business-model" },
+    { label: "About", href: "/about" },
   ]
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center">
-              <span className="text-background font-bold text-sm">AP</span>
-            </div>
-            <span className="font-bold text-xl text-foreground">The Ad-Project</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
-              >
-                {item.name}
-              </Link>
-            ))}
+    <nav className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+        {/* Logo */}
+        <Link href="/" className="flex items-center space-x-2">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-foreground">
+            <span className="text-sm font-bold text-background">A</span>
           </div>
+          <span className="text-lg font-bold text-foreground">The&nbsp;Ad-Project</span>
+        </Link>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm">
-              Login
-            </Button>
-            <Button size="sm">Get Started</Button>
-          </div>
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center space-x-8">
+          {navItems.map(({ label, href }) => (
+            <Link
+              key={href}
+              href={href}
+              className="font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        {/* Desktop actions */}
+        <div className="hidden md:flex items-center space-x-4">
+          <ThemeToggle />
+          <Button size="sm" className="bg-foreground text-background hover:bg-foreground/90">
+            Get&nbsp;Started
           </Button>
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-t border-border"
+        {/* Mobile hamburger */}
+        <div className="flex items-center space-x-2 md:hidden">
+          <ThemeToggle />
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsOpen((p) => !p)}
+            className="text-foreground hover:bg-muted"
           >
-            <div className="py-4 space-y-4">
-              {navItems.map((item) => (
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
+        </div>
+      </div>
+
+      {/* Mobile drawer */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="mobile-nav"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="border-t border-border bg-background md:hidden"
+          >
+            <div className="container mx-auto flex flex-col space-y-4 py-4 px-4">
+              {navItems.map(({ label, href }) => (
                 <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block px-4 py-2 text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  key={href}
+                  href={href}
+                  onClick={() => setIsOpen(false)}
+                  className="py-2 font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {item.name}
+                  {label}
                 </Link>
               ))}
-              <div className="px-4 pt-4 space-y-2">
-                <Button variant="outline" className="w-full bg-transparent">
-                  Login
-                </Button>
-                <Button className="w-full">Get Started</Button>
-              </div>
+
+              <Button size="sm" className="mt-2 bg-foreground text-background hover:bg-foreground/90">
+                Get&nbsp;Started
+              </Button>
             </div>
           </motion.div>
         )}
-      </div>
-    </motion.nav>
+      </AnimatePresence>
+    </nav>
   )
 }
+
+export { Navigation }
+export default Navigation
