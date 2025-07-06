@@ -22,28 +22,33 @@ export function MainLoadingSpinner() {
 
   return (
     <div className="fixed inset-0 bg-background flex items-center justify-center z-50 overflow-hidden">
-      {/* Animated background particles */}
-      <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-foreground/20 rounded-full"
-            animate={{
-              x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth],
-              y: [Math.random() * window.innerHeight, Math.random() * window.innerHeight],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Number.POSITIVE_INFINITY,
-              delay: Math.random() * 2,
-            }}
-            style={{
-              left: Math.random() * 100 + "%",
-              top: Math.random() * 100 + "%",
-            }}
-          />
-        ))}
+      {/* Animated background particles (viewport-size-agnostic) */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(20)].map((_, i) => {
+          // random % positions generated once
+          const left = `${Math.random() * 100}%`
+          const top = `${Math.random() * 100}%`
+          const xShift = Math.random() * 60 - 30 // -30% … +30%
+          const yShift = Math.random() * 60 - 30
+          return (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-foreground/20 rounded-full"
+              style={{ left, top }}
+              animate={{
+                x: [`0%`, `${xShift}%`],
+                y: [`0%`, `${yShift}%`],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Number.POSITIVE_INFINITY,
+                delay: Math.random() * 2,
+                ease: "easeInOut",
+              }}
+            />
+          )
+        })}
       </div>
 
       <div className="text-center relative z-10">
