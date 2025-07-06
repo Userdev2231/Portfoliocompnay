@@ -1,13 +1,22 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { Menu, X, Building2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Menu, X } from "lucide-react"
 import Link from "next/link"
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -15,17 +24,24 @@ export default function Navigation() {
     { name: "Services", href: "#services" },
     { name: "Technology", href: "#technology" },
     { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-effect">
-      <div className="max-w-7xl mx-auto px-4">
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent"
+      }`}
+    >
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Building2 className="w-8 h-8 text-foreground" />
-            <span className="text-xl font-bold text-high-contrast">The Ad-Project</span>
+            <div className="w-8 h-8 bg-foreground rounded-lg flex items-center justify-center">
+              <span className="text-background font-bold text-sm">AP</span>
+            </div>
+            <span className="font-bold text-xl text-foreground">The Ad-Project</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -34,44 +50,61 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-medium-contrast hover:text-high-contrast transition-colors duration-200"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 {item.name}
               </Link>
             ))}
-            <Button className="bg-foreground text-background hover:bg-foreground/90">Get Started</Button>
           </div>
 
-          {/* Mobile menu button */}
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-foreground">
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Button variant="outline" size="sm">
+              Login
+            </Button>
+            <Button size="sm">Get Started</Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="sm"
+            className="md:hidden"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden py-4 border-t border-border"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-background border-t border-border"
           >
-            <div className="flex flex-col space-y-4">
+            <div className="py-4 space-y-4">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-medium-contrast hover:text-high-contrast transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2 text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button className="bg-foreground text-background hover:bg-foreground/90 w-fit">Get Started</Button>
+              <div className="px-4 pt-4 space-y-2">
+                <Button variant="outline" className="w-full bg-transparent">
+                  Login
+                </Button>
+                <Button className="w-full">Get Started</Button>
+              </div>
             </div>
           </motion.div>
         )}
       </div>
-    </nav>
+    </motion.nav>
   )
 }
