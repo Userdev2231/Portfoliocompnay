@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -39,9 +38,6 @@ export default function AboutPage() {
     location: "",
     experience: "",
     skills: "",
-    portfolio: "",
-    linkedin: "",
-    github: "",
     role: "",
     message: "",
     availability: "",
@@ -447,47 +443,6 @@ export default function AboutPage() {
                     />
                   </div>
 
-                  {/* Links */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="portfolio" className="text-foreground">
-                        Portfolio/Website
-                      </Label>
-                      <Input
-                        id="portfolio"
-                        value={formData.portfolio}
-                        onChange={(e) => handleInputChange("portfolio", e.target.value)}
-                        placeholder="https://yourportfolio.com"
-                        className="bg-background/50"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="linkedin" className="text-foreground">
-                        LinkedIn Profile
-                      </Label>
-                      <Input
-                        id="linkedin"
-                        value={formData.linkedin}
-                        onChange={(e) => handleInputChange("linkedin", e.target.value)}
-                        placeholder="https://linkedin.com/in/yourprofile"
-                        className="bg-background/50"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="github" className="text-foreground">
-                      GitHub Profile (for tech roles)
-                    </Label>
-                    <Input
-                      id="github"
-                      value={formData.github}
-                      onChange={(e) => handleInputChange("github", e.target.value)}
-                      placeholder="https://github.com/yourusername"
-                      className="bg-background/50"
-                    />
-                  </div>
-
                   {/* Availability */}
                   <div className="space-y-2">
                     <Label htmlFor="availability" className="text-foreground">
@@ -571,11 +526,11 @@ export default function AboutPage() {
             <div className="flex flex-wrap justify-center gap-6">
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Mail className="w-4 h-4" />
-                <span>careers@theadproject.com</span>
+                <span>careers@theadproject01@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Phone className="w-4 h-4" />
-                <span>+91 98765 43210</span>
+                <span>+91 80508 53225</span>
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <MapPin className="w-4 h-4" />
