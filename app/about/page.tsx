@@ -65,7 +65,7 @@ export default function AboutPage() {
 
   const founders = [
     {
-      name: "Zeeshan M",
+      name: "Goutam P",
       role: "Co-Founder & CEO",
       description:
         "Visionary leader driving the future of outdoor advertising with cutting-edge technology and strategic innovation.",
@@ -73,7 +73,7 @@ export default function AboutPage() {
       image: "/placeholder.svg?height=300&width=300",
     },
     {
-      name: "Goutam P",
+      name: "Zeeshan M",
       role: "Co-Founder & CTO",
       description:
         "Technology architect building scalable AI and AR solutions that transform traditional advertising landscapes.",
