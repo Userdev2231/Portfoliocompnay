@@ -27,6 +27,7 @@ import {
   Crown,
   UserPlus,
 } from "lucide-react"
+import { supabase } from "@/lib/supabaseClient" // Add this import
 
 export default function AboutPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -48,11 +49,52 @@ export default function AboutPage() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      // Basic validation
+      if (!formData.name || !formData.email || !formData.skills || !formData.message) {
+        throw new Error('Please fill all required fields')
+      }
 
-    setIsLoading(false)
-    setIsSubmitted(true)
+      // Send data to Supabase
+      const { data, error } = await supabase
+        .from('applications')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || null,
+            location: formData.location || null,
+            experience: formData.experience || null,
+            skills: formData.skills,
+            role: formData.role,
+            message: formData.message,
+            availability: formData.availability || null,
+            expectations: formData.expectations || null
+          }
+        ])
+        .select()
+
+      if (error) throw error
+      
+      setIsSubmitted(true)
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        location: "",
+        experience: "",
+        skills: "",
+        role: "",
+        message: "",
+        availability: "",
+        expectations: ""
+      })
+
+    } catch (error) {
+      alert(`Submission failed: ${error.message}`)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleInputChange = (field: string, value: string) => {
