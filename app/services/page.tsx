@@ -222,12 +222,54 @@ const industries = [
 
 // Portfolio/Showcase Images
 const portfolioImages = [
-  { image: "/work (1).png" },
-  { image: "/work (2).png" },
-  { image: "/work (3).png" },
-  { image: "/work (4).png" },
-  { image: "/work (5).png" },
-  { image: "/work (6).png" }
+  {
+    id: 1,
+    title: "Mumbai Metro AR Campaign",
+    category: "Augmented Reality",
+    image: "/placeholder.svg?height=400&width=600",
+    description: "Interactive AR experience with 450% engagement increase",
+    metrics: "450% Engagement • 2.3M Views • ₹50L Revenue",
+  },
+  {
+    id: 2,
+    title: "Delhi Highway Smart Billboard",
+    category: "AI-Powered Display",
+    image: "/placeholder.svg?height=400&width=600",
+    description: "Dynamic content optimization using AI algorithms",
+    metrics: "85% CTR Increase • 1.8M Impressions • Real-time Updates",
+  },
+  {
+    id: 3,
+    title: "Bangalore Drone Light Show",
+    category: "Drone Technology",
+    image: "/placeholder.svg?height=400&width=600",
+    description: "Synchronized 500-drone display for tech conference",
+    metrics: "10M+ Social Reach • 95% Brand Recall • Viral Content",
+  },
+  {
+    id: 4,
+    title: "Chennai Interactive Kiosk Network",
+    category: "Smart Kiosks",
+    image: "/placeholder.svg?height=400&width=600",
+    description: "Mall network with touchscreen engagement",
+    metrics: "78% Interaction Rate • 12K Daily Users • Lead Generation",
+  },
+  {
+    id: 5,
+    title: "Hyderabad Transit Campaign",
+    category: "Transit Advertising",
+    image: "/placeholder.svg?height=400&width=600",
+    description: "Comprehensive bus and metro advertising network",
+    metrics: "5M+ Commuter Reach • 320% ROI • Multi-city Coverage",
+  },
+  {
+    id: 6,
+    title: "Pune Digital Wall Network",
+    category: "Digital Displays",
+    image: "/placeholder.svg?height=400&width=600",
+    description: "Smart wall displays with weather-adaptive content",
+    metrics: "24/7 Visibility • Weather Integration • Cost Effective",
+  },
 ]
 
 export default function ServicesPage() {

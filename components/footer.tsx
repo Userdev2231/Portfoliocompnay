@@ -79,18 +79,18 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-center">
                 <Mail className="w-5 h-5 text-blue-500 mr-3" />
-                <span className="text-gray-400">theadproject01@gmail.com</span>
+                <span className="text-gray-400">hello@theadproject.in</span>
               </div>
               <div className="flex items-center">
                 <Phone className="w-5 h-5 text-blue-500 mr-3" />
-                <span className="text-gray-400">+91 80508 53225</span>
+                <span className="text-gray-400">+91 98765 43210</span>
               </div>
               <div className="flex items-start">
                 <MapPin className="w-5 h-5 text-blue-500 mr-3 mt-1" />
                 <span className="text-gray-400">
-                  Innovation Hub, 
+                  Innovation Hub, Sector 62,
                   <br />
-                  Bangalore, 560001 , India
+                  Noida, UP 201309, India
                 </span>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2025 The Ad-Project. All rights reserved. | Transforming India's Advertising Landscape
+              © 2024 The Ad-Project. All rights reserved. | Transforming India's Advertising Landscape
             </p>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
