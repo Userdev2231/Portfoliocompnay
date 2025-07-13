@@ -2,12 +2,18 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
+import { useRouter } from "next/navigation"
 import { Rocket, TrendingUp, Users, Award, ArrowRight, Target } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function JoinUsSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const router = useRouter()
+
+  const handleRedirect = () => {
+    router.push("/about")
+  }
 
   const opportunities = [
     {
@@ -34,9 +40,9 @@ export default function JoinUsSection() {
 
   const stats = [
     { number: "500%", label: "Growth Rate", icon: TrendingUp },
-    { number: "₹100Cr+", label: "Funding Raised", icon: Target },
-    { number: "50+", label: "Team Members", icon: Users },
-    { number: "10+", label: "Cities Covered", icon: Rocket },
+    { number: "₹0", label: "Funding Raised", icon: Target },
+    { number: "5+", label: "Team Members", icon: Users },
+    { number: "2+", label: "Cities Covered", icon: Rocket },
   ]
 
   return (
@@ -120,6 +126,7 @@ export default function JoinUsSection() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button
                 size="lg"
+                onClick={handleRedirect}
                 className="bg-foreground text-background hover:bg-foreground/90 px-12 py-4 text-xl font-semibold rounded-xl group"
               >
                 Join Our Team
@@ -127,6 +134,7 @@ export default function JoinUsSection() {
               </Button>
               <Button
                 size="lg"
+                onClick={handleRedirect}
                 variant="outline"
                 className="border-2 border-border text-foreground hover:bg-muted px-12 py-4 text-xl font-semibold rounded-xl bg-transparent"
               >
