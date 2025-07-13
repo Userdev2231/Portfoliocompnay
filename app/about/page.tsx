@@ -426,21 +426,21 @@ export default function AboutPage() {
                 <CardContent className="pt-6">
                   <Mail className="w-8 h-8 text-primary mx-auto mb-4" />
                   <h3 className="font-semibold mb-2">Email</h3>
-                  <p className="text-muted-foreground">careers@theadproject.com</p>
+                  <p className="text-muted-foreground">theadproject01@gmail.com</p>
                 </CardContent>
               </Card>
               <Card className="text-center">
                 <CardContent className="pt-6">
                   <Phone className="w-8 h-8 text-primary mx-auto mb-4" />
                   <h3 className="font-semibold mb-2">Phone</h3>
-                  <p className="text-muted-foreground">+91 98765 43210</p>
+                  <p className="text-muted-foreground">+91 80508 53225</p>
                 </CardContent>
               </Card>
               <Card className="text-center">
                 <CardContent className="pt-6">
                   <MapPin className="w-8 h-8 text-primary mx-auto mb-4" />
                   <h3 className="font-semibold mb-2">Location</h3>
-                  <p className="text-muted-foreground">Bangalore, India</p>
+                  <p className="text-muted-foreground">Bangalore,Belagavi, India</p>
                 </CardContent>
               </Card>
             </div>
