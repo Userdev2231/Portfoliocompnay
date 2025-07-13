@@ -591,8 +591,7 @@ export default function TechnologyPage() {
               className="space-y-4"
             >
               <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                <img
-                  src="/placeholder.svg?height=300&width=400"
+               <img src="/AIdash.jpg" alt="Description of image">
                   alt="AI-powered ad detection and optimization dashboard"
                   className="w-full h-full object-cover"
                 />
@@ -613,8 +612,7 @@ export default function TechnologyPage() {
               className="space-y-4"
             >
               <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                <img
-                  src="/placeholder.svg?height=300&width=400"
+               <img src="/AR2.jpg" alt="Description of image">
                   alt="Augmented reality ad experience on mobile device"
                   className="w-full h-full object-cover"
                 />
@@ -635,8 +633,7 @@ export default function TechnologyPage() {
               className="space-y-4"
             >
               <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                <img
-                  src="/placeholder.svg?height=300&width=400"
+               <img src="/geo2.png" alt="Description of image">
                   alt="Geospatial mapping and location intelligence interface"
                   className="w-full h-full object-cover"
                 />
