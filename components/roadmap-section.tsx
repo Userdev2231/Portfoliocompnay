@@ -7,10 +7,10 @@ import { CheckCircle, Clock, Rocket, Globe } from "lucide-react"
 const roadmapPhases = [
   {
     phase: "Phase 1",
-    timeline: "2024 – Q2 2025",
+    timeline: "2025 – Q2 2025",
     status: "active",
     icon: CheckCircle,
-    milestones: ["Core platform live", "B2B onboarding", "Drone, kiosk, and transit modules ready"],
+    milestones: ["Core platform live", "B2B onboarding", "Drone, kiosk, and transit modules to be ready"],
   },
   {
     phase: "Phase 2",
