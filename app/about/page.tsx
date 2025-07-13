@@ -106,17 +106,17 @@ export default function AboutPage() {
   const founders = [
     {
       name: "Goutam P",
-      role: "Co-Founder & CEO",
+      role: "Co-Founder & CTO",
       description:
-        "Visionary leader with expertise in AI and AdTech innovation. Passionate about transforming outdoor advertising through cutting-edge technology.",
-      skills: ["AI/ML", "Business Strategy", "Product Vision", "Team Leadership"],
+        "Technical architect specializing in AI/ML, geospatial systems, and scalable infrastructure. Drives the technological innovation at The Ad-Project.",
+      skills: ["AI/ML", "Geospatial Tech", "System Architecture", "Full-Stack Development"],
     },
     {
       name: "Zeeshan M",
-      role: "Co-Founder & CTO",
+      role: "Co-Founder & CEO",
       description:
-        "Technical architect specializing in AR, geospatial systems, and scalable infrastructure. Drives the technological innovation at The Ad-Project.",
-      skills: ["AR/VR", "Geospatial Tech", "System Architecture", "Full-Stack Development"],
+        "Visionary leader with expertise in AI and AdTech innovation. Passionate about transforming outdoor advertising through cutting-edge technology.",
+      skills: ["Business Strategy", "Product Vision", "Team Leadership"],
     },
   ]
 
@@ -178,8 +178,10 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Founded by Goutam P and Zeeshan M — a small but dedicated team on a mission to revolutionize outdoor
-              advertising in India. We're building the future of ad-tech with AI, AR, geospatial tools, and more.
+              Founded by Goutam P and Zeeshan M, we're a small but dedicated team on a mission to 
+              revolutionize outdoor advertising in India. With a sharp focus on AI, AR, geospatial tools, 
+              and next-gen tech, we're building the future of ad-tech. We're also passionate about hunting talent across India — 
+              not based on fancy degrees or past experience, but on raw eagerness to learn, ambition, and the drive to build something impactful.
             </p>
             <Badge variant="outline" className="text-lg px-4 py-2">
               Future Unicorn Journey
