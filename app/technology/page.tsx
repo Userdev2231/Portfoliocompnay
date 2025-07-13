@@ -573,82 +573,89 @@ export default function TechnologyPage() {
       </section>
 
       {/* Technology Images Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Technology in Action</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              See how our advanced technology stack transforms traditional outdoor advertising into intelligent,
-              interactive, and measurable campaigns.
-            </p>
-          </div>
+<section className="py-20 px-4">
+  <div className="container mx-auto">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Technology in Action</h2>
+      <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+        See how our advanced technology stack transforms traditional outdoor advertising into intelligent,
+        interactive, and measurable campaigns.
+      </p>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-4"
-            >
-              <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-               <img src="/AIdash.jpg" alt="Description of image">
-                  alt="AI-powered ad detection and optimization dashboard"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">AI-Powered Analytics Dashboard</h3>
-                <p className="text-sm text-muted-foreground">
-                  Real-time campaign performance monitoring with predictive insights and automated optimization
-                  recommendations.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="space-y-4"
-            >
-              <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-               <img src="/AR2.jpg" alt="Description of image">
-                  alt="Augmented reality ad experience on mobile device"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">AR Interactive Experiences</h3>
-                <p className="text-sm text-muted-foreground">
-                  Immersive augmented reality campaigns that blend digital content with real-world environments for
-                  maximum engagement.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-4"
-            >
-              <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-               <img src="/geo2.png" alt="Description of image">
-                  alt="Geospatial mapping and location intelligence interface"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">Geospatial Intelligence</h3>
-                <p className="text-sm text-muted-foreground">
-                  Advanced GIS mapping with demographic overlays and traffic pattern analysis for optimal ad placement
-                  strategies.
-                </p>
-              </div>
-            </motion.div>
-          </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* AI-Powered Analytics */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="space-y-4"
+      >
+        <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+          <img
+            src="/AIdash.jpg"
+            alt="AI-powered ad detection and optimization dashboard"
+            className="w-full h-full object-cover"
+          />
         </div>
-      </section>
+        <div className="space-y-2">
+          <h3 className="font-semibold text-foreground">AI-Powered Analytics Dashboard</h3>
+          <p className="text-sm text-muted-foreground">
+            Real-time campaign performance monitoring with predictive insights and automated optimization
+            recommendations.
+          </p>
+        </div>
+      </motion.div>
+
+      {/* AR Interactive Experiences */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="space-y-4"
+      >
+        <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+          <img
+            src="/AR2.jpg"
+            alt="Augmented reality ad experience on mobile device"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="space-y-2">
+          <h3 className="font-semibold text-foreground">AR Interactive Experiences</h3>
+          <p className="text-sm text-muted-foreground">
+            Immersive augmented reality campaigns that blend digital content with real-world environments for
+            maximum engagement.
+          </p>
+        </div>
+      </motion.div>
+
+      {/* Geospatial Intelligence */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="space-y-4"
+      >
+        <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+          <img
+            src="/geo2.png"
+            alt="Geospatial mapping and location intelligence interface"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="space-y-2">
+          <h3 className="font-semibold text-foreground">Geospatial Intelligence</h3>
+          <p className="text-sm text-muted-foreground">
+            Advanced GIS mapping with demographic overlays and traffic pattern analysis for optimal ad placement
+            strategies.
+          </p>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</section>
+
 
       {/* CTA Section */}
       <section className="py-20 px-4 bg-muted/20">
