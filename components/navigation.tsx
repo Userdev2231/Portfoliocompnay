@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 const links = [
   { href: "/", label: "Home" },
@@ -20,15 +21,21 @@ export function Navigation({ className }: { className?: string }) {
   return (
     <header className={cn("fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur-md border-b", className)}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
-        {/* Logo */}
+        {/* Logo with .ico file */}
         <Link href="/" className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-sm">AD</span>
+          <div className="w-8 h-8 overflow-hidden rounded-lg">
+            <Image
+              src="/logo.ico"
+              alt="The Ad-Project Logo"
+              width={32}
+              height={32}
+              unoptimized
+            />
           </div>
           <span className="font-bold text-xl">The Ad-Project</span>
         </Link>
 
-        {/* Desktop links */}
+        {/* Desktop Links */}
         <ul className="hidden items-center gap-6 md:flex">
           {links.map(({ href, label }) => (
             <li key={href}>
@@ -42,7 +49,7 @@ export function Navigation({ className }: { className?: string }) {
           ))}
         </ul>
 
-        {/* Mobile burger */}
+        {/* Mobile Burger Icon */}
         <Button
           size="icon"
           variant="ghost"
@@ -54,7 +61,7 @@ export function Navigation({ className }: { className?: string }) {
         </Button>
       </nav>
 
-      {/* Mobile drawer */}
+      {/* Mobile Drawer */}
       {open && (
         <div className="md:hidden border-t bg-background">
           <ul className="space-y-1 px-4 pb-4 pt-2">
