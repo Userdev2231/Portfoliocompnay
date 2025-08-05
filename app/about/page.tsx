@@ -11,10 +11,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Users, Target, Lightbulb, Award, Loader2, CheckCircle, Mail, Phone, MapPin } from "lucide-react"
-import { supabase, type ApplicationData, logSupabaseError } from "@/lib/supabase"
 
 export default function AboutPage() {
-  const [formData, setFormData] = useState<ApplicationData>({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
@@ -28,9 +27,9 @@ export default function AboutPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState("")
 
-  const handleInputChange = (field: keyof ApplicationData, value: string) => {
+  const handleInputChange = (field: keyof typeof formData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
-    setError("") // Clear error when user starts typing
+    setError("")
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -39,52 +38,38 @@ export default function AboutPage() {
     setError("")
 
     try {
-      // Validate required fields
-      const requiredFields: (keyof ApplicationData)[] = [
-        "name",
-        "email",
-        "phone",
-        "location",
-        "contribution",
-        "availability",
-        "skills",
-        "expertise",
+      // Validate fields
+      const requiredFields = [
+        "name", "email", "phone", "location", "contribution",
+        "availability", "skills", "expertise"
       ]
-
       for (const field of requiredFields) {
-        if (!formData[field]?.trim()) {
+        if (!formData[field as keyof typeof formData]?.trim()) {
           throw new Error(`Please fill in the ${field} field.`)
         }
       }
 
-      // Validate email format
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
       if (!emailRegex.test(formData.email)) {
         throw new Error("Please enter a valid email address.")
       }
 
-      const { error: supabaseError } = await supabase.from("applications").insert([
-        {
-          name: formData.name.trim(),
-          email: formData.email.trim().toLowerCase(),
-          phone: formData.phone.trim(),
-          location: formData.location.trim(),
-          contribution: formData.contribution,
-          availability: formData.availability,
-          skills: formData.skills.trim(),
-          expertise: formData.expertise.trim(),
-          status: "pending",
+      const response = await fetch("https://formspree.io/f/xanbpjnv", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-      ])
+        body: JSON.stringify(formData),
+      })
 
-      if (supabaseError) {
-        logSupabaseError(supabaseError)
-        throw new Error(supabaseError.message || "Failed to submit application. Please try again.")
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result?.errors?.[0]?.message || "Submission failed.")
       }
 
       setIsSubmitted(true)
-
-      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -96,8 +81,8 @@ export default function AboutPage() {
         expertise: "",
       })
     } catch (err) {
-      console.error("Form submission error:", err)
-      setError(err instanceof Error ? err.message : "An unexpected error occurred. Please try again.")
+      console.error("Form error:", err)
+      setError(err instanceof Error ? err.message : "Something went wrong. Try again.")
     } finally {
       setIsSubmitting(false)
     }
