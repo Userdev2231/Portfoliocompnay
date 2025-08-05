@@ -10,14 +10,14 @@ const roadmapPhases = [
     timeline: "2025 – Q2 2025",
     status: "active",
     icon: CheckCircle,
-    milestones: ["Core platform live", "B2B onboarding", "Drone, kiosk, and transit modules to be ready"],
+    milestones: ["Core platform live", "B2B onboarding", "Inventory, kiosk, and transit modules to be ready"],
   },
   {
     phase: "Phase 2",
     timeline: "Q3 2025",
     status: "upcoming",
     icon: Clock,
-    milestones: ["Govt dashboard & tax module", "Mobile app launch", "Drone banner pilot campaigns"],
+    milestones: ["Govt dashboard & tax module", "Mobile Web app launch", "B2B campaigns"],
   },
   {
     phase: "Phase 3",
