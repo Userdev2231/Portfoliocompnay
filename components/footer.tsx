@@ -1,7 +1,17 @@
 "use client"
 
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { Brain, Mail, Phone, MapPin, Twitter, Linkedin, Instagram, Youtube } from "lucide-react"
+
+// Shared navigation links
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/technology", label: "Technology" },
+  { href: "/business-model", label: "Business Model" },
+]
 
 export default function Footer() {
   return (
@@ -24,34 +34,22 @@ export default function Footer() {
               with audiences through intelligent, sustainable, and measurable advertising solutions.
             </p>
             <div className="flex space-x-4">
-              <a
-                href="#"
-                className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors"
-              >
+              <a href="#" className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
                 <Twitter className="w-5 h-5 text-white" />
               </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center hover:bg-blue-800 transition-colors"
-              >
+              <a href="#" className="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center hover:bg-blue-800 transition-colors">
                 <Linkedin className="w-5 h-5 text-white" />
               </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-pink-600 rounded-lg flex items-center justify-center hover:bg-pink-700 transition-colors"
-              >
+              <a href="#" className="w-10 h-10 bg-pink-600 rounded-lg flex items-center justify-center hover:bg-pink-700 transition-colors">
                 <Instagram className="w-5 h-5 text-white" />
               </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors"
-              >
+              <a href="#" className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors">
                 <Youtube className="w-5 h-5 text-white" />
               </a>
             </div>
           </motion.div>
 
-          {/* Quick Links */}
+          {/* Quick Links (from Navigation) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -59,11 +57,11 @@ export default function Footer() {
           >
             <h4 className="text-lg font-semibold text-white mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {["Platform", "Services", "Technology", "Pricing", "About Us", "Careers"].map((link, index) => (
-                <li key={index}>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                    {link}
-                  </a>
+              {links.map(({ href, label }) => (
+                <li key={href}>
+                  <Link href={href} className="text-gray-400 hover:text-white transition-colors">
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>
