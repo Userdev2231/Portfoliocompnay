@@ -5,8 +5,18 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Play, BarChart3, Target, Zap } from "lucide-react"
 import Link from "next/link"
+import { useToast } from "@/components/ui/use-toast"
 
 export default function HeroSection() {
+  const { toast } = useToast()
+
+  const handleClick = () => {
+    toast({
+      title: "We're still in development environment.",
+      description: "Some features are coming soon. Stay tuned!",
+    })
+  }
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Background Elements */}
@@ -80,11 +90,11 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
             >
-              <Button size="lg" className="text-lg px-8 py-6 hover-lift">
+              <Button size="lg" className="text-lg px-8 py-6 hover-lift" onClick={handleClick}>
                 Start Your Campaign
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift bg-transparent">
+              <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover-lift bg-transparent" onClick={handleClick}>
                 <Play className="mr-2 h-5 w-5" />
                 Watch Demo
               </Button>
