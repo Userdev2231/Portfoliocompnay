@@ -15,6 +15,24 @@ export default function HeroSection() {
       title: "We're still in development environment.",
       description: "Some features are coming soon. Stay tuned!",
     })
+
+    if ("Notification" in window) {
+      if (Notification.permission === "granted") {
+        new Notification("🚀 Feature Coming Soon!", {
+          body: "We're still building this. Stay tuned!",
+          icon: "/logo.ico", // Put your icon file in /public/logo.png
+        })
+      } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted") {
+            new Notification("🚀 Feature Coming Soon!", {
+              body: "We're still building this. Stay tuned!",
+              icon: "/logo.png",
+            })
+          }
+        })
+      }
+    }
   }
 
   return (
@@ -144,7 +162,7 @@ export default function HeroSection() {
                       Explore Business Model
                     </Button>
                   </Link>
-                  <Button className="hover-lift">Schedule Consultation</Button>
+                  <Button className="hover-lift" onClick={handleClick}>Schedule Consultation</Button>
                 </div>
               </CardContent>
             </Card>
