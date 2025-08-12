@@ -4,161 +4,243 @@ import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { AlertTriangle, Clock, DollarSign, MapPin, BarChart3, Leaf } from "lucide-react"
 
-const painPoints = [
+const industryChallenges = [
   {
     icon: Clock,
-    title: "Manual & Time-Consuming",
-    description: "Ad bookings today are manual, fragmented, and city-dependent",
-    color: "bg-gradient-to-br from-red-500 via-rose-500 to-pink-600",
-    delay: 0.1
+    title: "Manual Processes",
+    description: "Tedious, city-dependent ad bookings stuck in paperwork",
+    color: "#FF6B6B",
+    pattern: "zigzag"
   },
   {
     icon: DollarSign,
-    title: "Wasted Resources",
-    description: "Brands waste weeks negotiating permissions, finding vendors, and installing ads",
-    color: "bg-gradient-to-br from-amber-500 via-orange-500 to-red-600",
-    delay: 0.2
+    title: "Resource Drain",
+    description: "Weeks wasted on vendor negotiations and installations",
+    color: "#FFA07A",
+    pattern: "dots"
   },
   {
     icon: MapPin,
-    title: "No Transparency",
-    description: "There's no transparent system for governments to track outdoor campaigns or collect tax",
-    color: "bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-500",
-    delay: 0.3
+    title: "Black Box System",
+    description: "No transparency for governments to track or tax campaigns",
+    color: "#FFD166",
+    pattern: "lines"
   },
   {
     icon: BarChart3,
-    title: "Limited Reach",
-    description: "SMEs & startups struggle to plan PAN-India visibility",
-    color: "bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600",
-    delay: 0.4
+    title: "Geographic Limits",
+    description: "SMEs can't effectively plan nationwide visibility",
+    color: "#06D6A0",
+    pattern: "crosses"
   },
   {
     icon: AlertTriangle,
-    title: "No ROI Tracking",
-    description: "Traditional ads offer no digital engagement or ROI tracking",
-    color: "bg-gradient-to-br from-purple-500 via-violet-500 to-fuchsia-600",
-    delay: 0.5
+    title: "ROI Blindspots",
+    description: "Traditional ads lack digital tracking capabilities",
+    color: "#118AB2",
+    pattern: "waves"
   },
   {
     icon: Leaf,
-    title: "Environmental Impact",
-    description: "Environmental damage caused by plastic-based materials",
-    color: "bg-gradient-to-br from-green-500 via-emerald-500 to-teal-600",
-    delay: 0.6
+    title: "Eco Damage",
+    description: "Plastic-based materials harming the environment",
+    color: "#073B4C",
+    pattern: "grid"
   },
 ]
 
-export default function ProblemSection() {
+export default function IndustryChallenges() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-28 px-6 bg-gradient-to-b from-muted/20 to-muted/50 overflow-hidden"
+      className="relative py-32 px-6 bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden"
     >
-      {/* Decorative elements */}
-      <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-rose-500/10 blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-indigo-500/10 blur-3xl" />
-      
+      {/* Abstract background shapes */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-5 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]">
+          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay"></div>
+        </div>
+        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-rose-200/30 blur-3xl"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full bg-indigo-200/30 blur-3xl"></div>
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section header with more personality */}
-        <motion.header
+        {/* Section header with creative typography */}
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 0.77, 0.47, 0.97] }}
           className="text-center mb-24"
         >
-          <span className="inline-block px-4 py-2 bg-rose-500/10 text-rose-600 rounded-full text-sm font-medium mb-6">
-            Industry Challenges
-          </span>
-          <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            The{" "}
+          <motion.span 
+            initial={{ scale: 0.9 }}
+            animate={isInView ? { scale: 1 } : {}}
+            transition={{ delay: 0.2 }}
+            className="inline-block px-5 py-2.5 bg-white border border-gray-200 rounded-full text-sm font-medium mb-6 shadow-sm"
+          >
+            Industry Pain Points
+          </motion.span>
+          <h2 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+            Breaking Point for <br />
             <span className="relative inline-block">
-              <span className="relative z-10">Pain</span>
-              <span className="absolute bottom-2 left-0 w-full h-4 bg-gradient-to-r from-red-400 to-orange-400 opacity-30 -z-0" />
-            </span>{" "}
-            Points
+              <span className="relative z-10">Outdoor Advertising</span>
+              <svg 
+                className="absolute -bottom-3 left-0 w-full h-4 text-rose-400" 
+                viewBox="0 0 200 20"
+              >
+                <path 
+                  d="M0,10 Q50,5 100,10 T200,10" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Outdoor advertising is stuck in the past. Manual processes, lack of transparency, and environmental concerns 
-            are holding the industry back from its true potential.
+            The industry is at a crossroads. Antiquated systems can't keep up with modern demands, 
+            creating friction at every turn.
           </p>
-        </motion.header>
+        </motion.div>
 
-        {/* Problem cards grid */}
+        {/* Creative cards grid with patterns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {painPoints.map((item, idx) => (
-            <motion.article
+          {industryChallenges.map((item, idx) => (
+            <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              initial={{ opacity: 0, y: 50, rotate: -1 }}
+              animate={isInView ? { opacity: 1, y: 0, rotate: 0 } : {}}
               transition={{ 
                 duration: 0.6, 
-                delay: item.delay,
+                delay: idx * 0.1 + 0.3,
                 ease: [0.34, 1.56, 0.64, 1]
               }}
               whileHover={{ 
-                y: -8,
-                transition: { duration: 0.3 }
+                y: -5,
+                transition: { duration: 0.2 }
               }}
-              className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group overflow-hidden"
+              className="relative bg-white rounded-2xl p-8 border border-gray-200 shadow-xs hover:shadow-md transition-all duration-300 group"
             >
-              {/* Gradient overlay on hover */}
-              <div className={`absolute inset-0 ${item.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+              {/* Pattern background */}
+              <div 
+                className={`absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pattern-${item.pattern}`}
+                style={{ backgroundColor: item.color }}
+              ></div>
               
-              {/* Icon container with shine effect */}
-              <div className="relative">
-                <div className={`absolute -inset-1 ${item.color} rounded-xl blur opacity-0 group-hover:opacity-50 transition-opacity duration-300`} />
-                <div className={`relative w-16 h-16 rounded-xl ${item.color} flex items-center justify-center shadow-lg`}>
-                  <item.icon className="w-8 h-8 text-white" />
-                </div>
-              </div>
+              {/* Animated icon container */}
+              <motion.div 
+                whileHover={{ rotate: 5 }}
+                className="relative w-16 h-16 rounded-xl mb-6 flex items-center justify-center"
+                style={{ backgroundColor: item.color }}
+              >
+                <item.icon className="w-8 h-8 text-white" />
+                <div className="absolute inset-0 rounded-xl border-2 border-white/30"></div>
+              </motion.div>
 
-              <h3 className="mt-6 text-xl font-bold text-gray-900 mb-4 relative">
-                <span className="relative z-10">{item.title}</span>
-                <span className={`absolute bottom-0 left-0 w-0 h-1 ${item.color.replace('bg-', 'bg-opacity-20 bg-')} group-hover:w-full transition-all duration-500`} />
+              <h3 className="text-xl font-bold text-gray-900 mb-4 relative inline-block">
+                {item.title}
+                <span 
+                  className="absolute -bottom-1 left-0 w-0 h-1 group-hover:w-full transition-all duration-500"
+                  style={{ backgroundColor: item.color }}
+                ></span>
               </h3>
               <p className="text-gray-600 leading-relaxed">{item.description}</p>
-            </motion.article>
+              
+              {/* Corner accent */}
+              <div 
+                className="absolute top-0 right-0 w-16 h-16 overflow-hidden"
+              >
+                <div 
+                  className="absolute top-0 right-0 w-32 h-32 origin-bottom-left rotate-45"
+                  style={{ backgroundColor: item.color }}
+                ></div>
+              </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* Impact stats with more visual punch */}
+        {/* Impact stats with creative layout */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-24"
+          transition={{ duration: 0.8, delay: 1 }}
+          className="mt-28"
         >
-          <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-12 border border-gray-100 shadow-sm overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-indigo-500/10 blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-rose-500/10 blur-3xl" />
+          <div className="relative bg-white rounded-3xl p-12 border border-gray-200 shadow-xs overflow-hidden">
+            {/* Decorative corner elements */}
+            <div className="absolute top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-gray-200 rounded-tl-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-gray-200 rounded-br-3xl"></div>
             
-            <h3 className="relative text-3xl font-bold text-gray-900 text-center mb-12">
-              <span className="relative z-10">The Hard Numbers</span>
-              <span className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-32 h-2 bg-gradient-to-r from-rose-400 to-orange-400 opacity-30 -z-0" />
+            <h3 className="text-3xl font-bold text-gray-900 text-center mb-12 relative">
+              <span className="relative z-10 px-4 bg-white">By The Numbers</span>
+              <span className="absolute top-1/2 left-0 w-full h-px bg-gray-200 -z-0"></span>
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               {[
-                { value: "60-80%", label: "Time Wasted on Manual Processes", color: "from-red-500 to-orange-500" },
-                { value: "₹1000Cr+", label: "Lost Revenue Due to Inefficiencies", color: "from-amber-500 to-red-500" },
-                { value: "85%", label: "Campaigns Without ROI Tracking", color: "from-orange-500 to-rose-500" }
+                { value: "60-80%", label: "Time lost to manual work", color: "#FF6B6B" },
+                { value: "₹1000Cr+", label: "Revenue leakage annually", color: "#FFA07A" },
+                { value: "85%", label: "No ROI measurement", color: "#118AB2" }
               ].map((stat, idx) => (
                 <div key={idx} className="space-y-4">
-                  <div className="text-5xl font-bold bg-gradient-to-r bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(to right, ${stat.color})` }}>
+                  <div 
+                    className="text-5xl font-bold mb-2"
+                    style={{ color: stat.color }}
+                  >
                     {stat.value}
                   </div>
                   <div className="text-gray-600 font-medium">{stat.label}</div>
+                  <div 
+                    className="w-16 h-1 mx-auto mt-4 rounded-full"
+                    style={{ backgroundColor: stat.color }}
+                  ></div>
                 </div>
               ))}
             </div>
           </div>
         </motion.div>
       </div>
+
+      {/* CSS for patterns - would go in your global CSS */}
+      <style jsx>{`
+        .pattern-zigzag {
+          background-image: 
+            linear-gradient(135deg, currentColor 25%, transparent 25%),
+            linear-gradient(225deg, currentColor 25%, transparent 25%),
+            linear-gradient(315deg, currentColor 25%, transparent 25%),
+            linear-gradient(45deg, currentColor 25%, transparent 25%);
+          background-size: 8px 8px;
+        }
+        .pattern-dots {
+          background-image: radial-gradient(currentColor 1px, transparent 1px);
+          background-size: 8px 8px;
+        }
+        .pattern-lines {
+          background-image: repeating-linear-gradient(45deg, currentColor, currentColor 1px, transparent 1px, transparent 8px);
+        }
+        .pattern-crosses {
+          background-image: 
+            linear-gradient(currentColor 1px, transparent 1px),
+            linear-gradient(90deg, currentColor 1px, transparent 1px);
+          background-size: 8px 8px;
+        }
+        .pattern-waves {
+          background-image: 
+            radial-gradient(circle at 100% 50%, currentColor 20%, transparent 20%),
+            radial-gradient(circle at 0% 50%, currentColor 20%, transparent 20%);
+          background-size: 16px 16px;
+        }
+        .pattern-grid {
+          background-image: 
+            linear-gradient(currentColor 1px, transparent 1px),
+            linear-gradient(90deg, currentColor 1px, transparent 1px);
+          background-size: 16px 16px;
+        }
+      `}</style>
     </section>
   )
 }
