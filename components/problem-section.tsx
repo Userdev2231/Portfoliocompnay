@@ -9,42 +9,42 @@ const industryChallenges = [
     icon: Clock,
     title: "Manual Processes",
     description: "Tedious, city-dependent ad bookings stuck in paperwork",
-    color: "#FF6B6B",
+    color: "#EF4444", // red-500
     pattern: "zigzag"
   },
   {
     icon: DollarSign,
     title: "Resource Drain",
     description: "Weeks wasted on vendor negotiations and installations",
-    color: "#FFA07A",
+    color: "#F59E0B", // amber-500
     pattern: "dots"
   },
   {
     icon: MapPin,
     title: "Black Box System",
     description: "No transparency for governments to track or tax campaigns",
-    color: "#FFD166",
+    color: "#84CC16", // lime-500
     pattern: "lines"
   },
   {
     icon: BarChart3,
     title: "Geographic Limits",
     description: "SMEs can't effectively plan nationwide visibility",
-    color: "#06D6A0",
+    color: "#3B82F6", // blue-500
     pattern: "crosses"
   },
   {
     icon: AlertTriangle,
     title: "ROI Blindspots",
     description: "Traditional ads lack digital tracking capabilities",
-    color: "#118AB2",
+    color: "#8B5CF6", // violet-500
     pattern: "waves"
   },
   {
     icon: Leaf,
     title: "Eco Damage",
     description: "Plastic-based materials harming the environment",
-    color: "#073B4C",
+    color: "#10B981", // emerald-500
     pattern: "grid"
   },
 ]
@@ -56,15 +56,15 @@ export default function IndustryChallenges() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-32 px-6 bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden"
+      className="relative py-32 px-6 bg-gradient-to-b from-gray-900 to-gray-950 overflow-hidden"
     >
       {/* Abstract background shapes */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-5 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]">
-          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay"></div>
+        <div className="absolute inset-0 opacity-5 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]">
+          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay"></div>
         </div>
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-rose-200/30 blur-3xl"></div>
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full bg-indigo-200/30 blur-3xl"></div>
+        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-rose-900/20 blur-3xl"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full bg-indigo-900/20 blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -79,16 +79,16 @@ export default function IndustryChallenges() {
             initial={{ scale: 0.9 }}
             animate={isInView ? { scale: 1 } : {}}
             transition={{ delay: 0.2 }}
-            className="inline-block px-5 py-2.5 bg-white border border-gray-200 rounded-full text-sm font-medium mb-6 shadow-sm"
+            className="inline-block px-5 py-2.5 bg-gray-800 border border-gray-700 rounded-full text-sm font-medium mb-6 shadow-lg text-rose-400"
           >
             Industry Pain Points
           </motion.span>
-          <h2 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+          <h2 className="text-5xl md:text-7xl font-bold text-gray-100 mb-6 leading-tight">
             Breaking Point for <br />
             <span className="relative inline-block">
               <span className="relative z-10">Outdoor Advertising</span>
               <svg 
-                className="absolute -bottom-3 left-0 w-full h-4 text-rose-400" 
+                className="absolute -bottom-3 left-0 w-full h-4 text-rose-500" 
                 viewBox="0 0 200 20"
               >
                 <path 
@@ -101,7 +101,7 @@ export default function IndustryChallenges() {
               </svg>
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             The industry is at a crossroads. Antiquated systems can't keep up with modern demands, 
             creating friction at every turn.
           </p>
@@ -123,32 +123,32 @@ export default function IndustryChallenges() {
                 y: -5,
                 transition: { duration: 0.2 }
               }}
-              className="relative bg-white rounded-2xl p-8 border border-gray-200 shadow-xs hover:shadow-md transition-all duration-300 group"
+              className="relative bg-gray-800 rounded-2xl p-8 border border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
               {/* Pattern background */}
               <div 
-                className={`absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pattern-${item.pattern}`}
+                className={`absolute inset-0 opacity-5 group-hover:opacity-[0.08] transition-opacity duration-500 pattern-${item.pattern}`}
                 style={{ backgroundColor: item.color }}
               ></div>
               
               {/* Animated icon container */}
               <motion.div 
                 whileHover={{ rotate: 5 }}
-                className="relative w-16 h-16 rounded-xl mb-6 flex items-center justify-center"
+                className="relative w-16 h-16 rounded-xl mb-6 flex items-center justify-center shadow-lg"
                 style={{ backgroundColor: item.color }}
               >
-                <item.icon className="w-8 h-8 text-white" />
-                <div className="absolute inset-0 rounded-xl border-2 border-white/30"></div>
+                <item.icon className="w-8 h-8 text-gray-900" />
+                <div className="absolute inset-0 rounded-xl border-2 border-white/20"></div>
               </motion.div>
 
-              <h3 className="text-xl font-bold text-gray-900 mb-4 relative inline-block">
+              <h3 className="text-xl font-bold text-gray-100 mb-4 relative inline-block">
                 {item.title}
                 <span 
                   className="absolute -bottom-1 left-0 w-0 h-1 group-hover:w-full transition-all duration-500"
                   style={{ backgroundColor: item.color }}
                 ></span>
               </h3>
-              <p className="text-gray-600 leading-relaxed">{item.description}</p>
+              <p className="text-gray-400 leading-relaxed">{item.description}</p>
               
               {/* Corner accent */}
               <div 
@@ -170,21 +170,21 @@ export default function IndustryChallenges() {
           transition={{ duration: 0.8, delay: 1 }}
           className="mt-28"
         >
-          <div className="relative bg-white rounded-3xl p-12 border border-gray-200 shadow-xs overflow-hidden">
+          <div className="relative bg-gray-800 rounded-3xl p-12 border border-gray-700 shadow-lg overflow-hidden">
             {/* Decorative corner elements */}
-            <div className="absolute top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-gray-200 rounded-tl-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-gray-200 rounded-br-3xl"></div>
+            <div className="absolute top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-gray-700 rounded-tl-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-gray-700 rounded-br-3xl"></div>
             
-            <h3 className="text-3xl font-bold text-gray-900 text-center mb-12 relative">
-              <span className="relative z-10 px-4 bg-white">By The Numbers</span>
-              <span className="absolute top-1/2 left-0 w-full h-px bg-gray-200 -z-0"></span>
+            <h3 className="text-3xl font-bold text-gray-100 text-center mb-12 relative">
+              <span className="relative z-10 px-4 bg-gray-800">By The Numbers</span>
+              <span className="absolute top-1/2 left-0 w-full h-px bg-gray-700 -z-0"></span>
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               {[
-                { value: "60-80%", label: "Time lost to manual work", color: "#FF6B6B" },
-                { value: "₹1000Cr+", label: "Revenue leakage annually", color: "#FFA07A" },
-                { value: "85%", label: "No ROI measurement", color: "#118AB2" }
+                { value: "60-80%", label: "Time lost to manual work", color: "#EF4444" },
+                { value: "₹1000Cr+", label: "Revenue leakage annually", color: "#F59E0B" },
+                { value: "85%", label: "No ROI measurement", color: "#3B82F6" }
               ].map((stat, idx) => (
                 <div key={idx} className="space-y-4">
                   <div 
@@ -193,9 +193,9 @@ export default function IndustryChallenges() {
                   >
                     {stat.value}
                   </div>
-                  <div className="text-gray-600 font-medium">{stat.label}</div>
+                  <div className="text-gray-400 font-medium">{stat.label}</div>
                   <div 
-                    className="w-16 h-1 mx-auto mt-4 rounded-full"
+                    className="w-16 h-1 mx-auto mt-4 rounded-full opacity-80"
                     style={{ backgroundColor: stat.color }}
                   ></div>
                 </div>
